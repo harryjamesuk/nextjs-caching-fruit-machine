@@ -1,5 +1,8 @@
 # Next.js Caching Fruit Machine
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fharryjamesuk%2Fnextjs-caching-fruit-machine)\
+[View demo](https://nextjs-caching-fruit-machine.vercel.app/)
+
 This app demonstrates the concept of **Segment-level Caching** using the **revalidate** property *(which sets the cache
 lifetime / revalidation time for the route)*.
 
