@@ -12,17 +12,15 @@ export default function RootLayout({
     const [isDarkMode, setDarkMode] = React.useState(false);
 
     return (
-        <html lang="en">
+        <html lang="en" className={`${isDarkMode ? 'dark' : ''}`}>
             {/*
                 <head /> will contain the components returned by the nearest parent
                 head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
             */}
             <head/>
-            <body className={`${isDarkMode ? 'dark' : ''}`}>
+            <body className='dark:bg-black dark:text-white'>
                 <DarkModeSwitch isDarkMode={isDarkMode} setDarkMode={setDarkMode}/>
-                <div className='dark:bg-black dark:text-white'>
-                    {children}
-                </div>
+                {children}
             </body>
         </html>
     )
