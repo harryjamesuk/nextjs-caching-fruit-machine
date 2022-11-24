@@ -1,16 +1,12 @@
-'use client'; // we use state for dark mode toggling, therefore this must be a Client Component.
-
 import './styles/globals.css'
 import React from "react";
-import DarkModeSwitch from "../components/DarkModeSwitch";
+import ThemeProvider from "./ThemeProvider";
 
 export default function RootLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
-    const [isDarkMode, setDarkMode] = React.useState(false);
-
     return (
         <html lang="en">
             {/*
@@ -18,11 +14,15 @@ export default function RootLayout({
                 head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
             */}
             <head/>
-            <body className={`${isDarkMode ? 'dark' : ''}`}>
-                <DarkModeSwitch isDarkMode={isDarkMode} setDarkMode={setDarkMode}/>
-                <div className='dark:bg-black dark:text-white'>
-                    {children}
-                </div>
+            <body className='dark:bg-black dark:text-white'>
+
+            {/*
+                Render our provider as deep as possible in the tree so Next.js can optimize the static
+                parts of our Server Components.
+            */}
+            <ThemeProvider>
+                {children}
+            </ThemeProvider>
             </body>
         </html>
     )
